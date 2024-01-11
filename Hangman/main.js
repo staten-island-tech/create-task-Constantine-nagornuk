@@ -12,12 +12,18 @@ async function getdata(url) {
      } 
  let data2 = await repsonce.json()
 console.log(data2)
+console.log("HI")
+    }
+
+catch (error){
+  error }
+
+DOMselectors.word.insertAdjacentText('beforeend',data2)
+
 } 
 
-DOMselectors.inside.insertAdjacentText('beforeend',data2)
- catch (error){
-    error } } 
-  getdata(WorderPull) 
+getdata(WorderPull)
 
-// something is wrong with do selctor
 
+
+ console.log("this doesnt work")
