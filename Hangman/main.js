@@ -1,10 +1,10 @@
-const WorderPull = "https://random-word-api.herokuapp.com/word"
+ const WorderPull = "https://random-word-api.herokuapp.com/word"
 const DOMselectors = {
 
   word: document.getElementById("RANWord")
 } 
 
-
+let data2;
 
 async function getdata(url) { 
   try {
@@ -13,8 +13,8 @@ async function getdata(url) {
       throw new Error(repsonce.statusText) 
      } 
     
-     const data2 = await repsonce.json()
-console.log(data2)
+    data2 = await repsonce.json()
+    console.log(data2)
 
     }
 
@@ -26,6 +26,12 @@ catch (error){
 } 
 
 getdata(WorderPull)
+
+
+
+console.log("wdwd")
+
+
 
 
 
