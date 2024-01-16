@@ -1,8 +1,4 @@
-/* 
-im getting rid of api
-stupid things wont let me make it globally
-jsut make a huge array of random words
-*/
+
 
 
 const words = [
@@ -111,14 +107,20 @@ const words = [
 
 let random_num = Math.floor(Math.random() * 100)
 let selected_word = words[random_num]
+console.log(selected_word)
 
- if(letter_choice in selected_word){
-  console.log('YUH')
-} 
-/* while(1){
-  console.log('Ballsack\n')
+
+let letter_choice = 'a'; // make user iinput later
+
+if (selected_word.includes(letter_choice)) {
+  console.log('YUH');
+} else {
+  console.log('Nope');
 }
 
+let displayed_word = selected_word
+  .split('')
+  .map(letter => (letter === letter_choice ? letter : '-'))
+  .join('');
 
-sean wrote this btw
- */
+console.log(displayed_word);
