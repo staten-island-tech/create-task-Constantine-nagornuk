@@ -119,7 +119,6 @@ const attempts2 = []
 
 
 let letter_choice = prompt('Choose a letter')
-// guess count will now be a global variable. I am thinking to reset count or restart game you click button to clear all fields and restart
 if (guesses > 0 ){
 
 
@@ -128,7 +127,7 @@ if (selected_word.includes(letter_choice)) {
   console.log('You Guess Correct');
   attempts1.push(letter_choice)
   
-  //  check to make sure if u guess the word yet
+  //  2  check to make sure if u guess the word yet
 }
  else {
   console.log('Incorrect guess/Not valid guess type');
@@ -139,15 +138,13 @@ if (selected_word.includes(letter_choice)) {
   .split('')
   .map(letter => (letter === letter_choice ? letter : '-'))
   .join('');
-  // need to make it so it keeps it cause right now if you guess correct its goes --a-- but if u guess wrong it resets to ----- and even correct again erases last attempt
+  //  1 need to make it so it keeps it cause right now if you guess correct its goes --a-- but if u guess wrong it resets to ----- and even correct again erases last attempt
   console.log(displayed_word);
   
 
 }
 
-else if (guesses <= 0){
-console.log("game over")
-}
+
 
   
 }
@@ -155,7 +152,8 @@ console.log("game over")
 
 
 const DOMSELECTORS = {
-  Button1 : document.getElementById("Guess")
+  Button1 : document.getElementById("Guess"),
+  Button2 : document.getElementById("RESET")
 }
 
 let guesses = 6
@@ -163,9 +161,22 @@ let guesses = 6
 
 DOMSELECTORS.Button1.addEventListener("click" , TakeAGUESS)
 function TakeAGUESS(){
+if (guesses <= 0){
+  console.log("game over")
+  }
+else if(guesses > 0){
+  guesses -= 1
+  showletter()
+  console.log(guesses)
+}}
 
-showletter()
-guesses -= 1
-// add a checjer to not print guesses after it goes to 0 or lower
-console.log(guesses)
+DOMSELECTORS.Button2.addEventListener("click", Reset1)
+function Reset1(){
+guesses = 6
+random_num = Math.floor(Math.random() * 100)
+selected_word = words[random_num]
+
 }
+
+
+// reset button now has full functionality. resets guesses and words
