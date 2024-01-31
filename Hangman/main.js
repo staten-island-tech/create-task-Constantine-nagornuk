@@ -40,6 +40,7 @@ const words = [
   'legal',
   'cats',
   'homeless',
+  'poop',
   'ad',
   'snow',
   'resolute',
@@ -96,6 +97,7 @@ const words = [
   'overrated',
   'flimsy',
   'fortunate',
+  'timber',
   'birthday',
   'desert',
   'bang',
@@ -140,15 +142,7 @@ if (selected_word.includes(letter_choice)) {
   .join('');
   //  1 need to make it so it keeps it cause right now if you guess correct its goes --a-- but if u guess wrong it resets to ----- and even correct again erases last attempt
   console.log(displayed_word);
-  
-
-}
-
-
-
-  
-}
-
+  }}
 
 
 const DOMSELECTORS = {
@@ -179,4 +173,4 @@ selected_word = words[random_num]
 }
 
 
-// reset button now has full functionality. resets guesses and words
+
