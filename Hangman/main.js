@@ -153,6 +153,7 @@ const DOMSELECTORS = {
 let guesses = 6
 
 
+
 DOMSELECTORS.Button1.addEventListener("click" , TakeAGUESS)
 function TakeAGUESS(){
 if (guesses <= 0){
