@@ -112,27 +112,22 @@ let selected_word = words[random_num]
 console.log(selected_word)
 
 
-const attempts1 = []
-const attempts2 = []
+let attempts1 = []
+let attempts2 = []
+let correctGuessesPlaceholder = Array(selected_word.length).fill('-'); // Placeholder array for correct guesses
+
 
 function showletter() {  
-
-
-
-
 let letter_choice = prompt('Choose a letter')
 if (guesses > 0 ){
-
-
-
 if (selected_word.includes(letter_choice)) {
- 
   console.log('You Guess Correct');
   DOMSELECTORS.lol.innerHTML = '';
   DOMSELECTORS.lol.innerHTML = 'You Guess Correct';
   attempts1.push(letter_choice)
-  
-  //  2  check to make sure if u guess the word yet
+  selected_word.split('').forEach((letter, index) => {
+    if (letter === letter_choice) correctGuessesPlaceholder[index] = letter;
+  });
 }
  else {
   console.log('Incorrect guess/Not valid guess type');
@@ -140,15 +135,8 @@ if (selected_word.includes(letter_choice)) {
   DOMSELECTORS.lol.innerHTML = 'You Guess Incorrect';
   attempts2.push(letter_choice)
 } 
-  let displayed_word = selected_word
-  .split('')
-  .map(letter => (letter === letter_choice ? letter : '-'))
-  .join('');
-  //  1 need to make it so it keeps it cause right now if you guess correct its goes --a-- but if u guess wrong it resets to ----- and even correct again erases last attempt
-  console.log(displayed_word);
+  console.log(correctGuessesPlaceholder.join(''));
   }
-
-
 }
 
 
@@ -157,10 +145,12 @@ const DOMSELECTORS = {
   Button2 : document.getElementById("RESET"),
   lol: document.getElementById("GuessType"),
   gog: document.getElementById("Length1"),
-  poop: document.getElementById('Guessmany')
+  poop: document.getElementById('Guessmany'),
+  wordL: document.getElementById('WordLength')
 }
 
-let guesses = 6
+DOMSELECTORS.wordL.innerHTML = correctGuessesPlaceholder
+let guesses = 15
 DOMSELECTORS.poop.innerHTML ='You have ' + guesses + '  guesses left'
 
 
@@ -186,18 +176,20 @@ else if(guesses > 0){
 DOMSELECTORS.Button2.addEventListener("click", Reset1)
 function Reset1(){
   
-guesses = 6
+guesses = 15
+DOMSELECTORS.poop.innerHTML=guesses
 DOMSELECTORS.lol.innerHTML = '';
 DOMSELECTORS.lol.innerHTML = 'No Guess yet';
 random_num = Math.floor(Math.random() * 100)
 selected_word = words[random_num]
-console.log(selected_word)
+correctGuessesPlaceholder = Array(selected_word.length).fill('-'); 
+  attempts1 = []; 
+  attempts2 = [];
 }
 
 
 const length2 = selected_word.length
-console.log(length2)
-DOMSELECTORS.gog.innerHTML= length2
+DOMSELECTORS.gog.innerHTML= 'Length of your word: '+ length2
 
 
 
