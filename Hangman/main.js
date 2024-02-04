@@ -112,10 +112,7 @@ let selected_word = words[random_num]
 console.log(selected_word)
 
 
-let attempts1 = []
-let attempts2 = []
-let correctGuessesPlaceholder = Array(selected_word.length).fill('-'); // Placeholder array for correct guesses
-
+let correctGuessesPlaceholder = Array(selected_word.length).fill('-'); 
 
 function showletter() {  
 let letter_choice = prompt('Choose a letter')
@@ -124,20 +121,26 @@ if (selected_word.includes(letter_choice)) {
   console.log('You Guess Correct');
   DOMSELECTORS.lol.innerHTML = '';
   DOMSELECTORS.lol.innerHTML = 'You Guess Correct';
-  attempts1.push(letter_choice)
+
   selected_word.split('').forEach((letter, index) => {
     if (letter === letter_choice) correctGuessesPlaceholder[index] = letter;
   });
-}
+  DOMSELECTORS.wordL.innerHTML = correctGuessesPlaceholder.join('');
+
+if (!correctGuessesPlaceholder.includes('-')) {
+  console.log('Congratulations! You have guessed the word correctly!');
+  DOMSELECTORS.lol.innerHTML = 'Congratulations! You have guessed the word correctly!';
+  DOMSELECTORS.Button1.disabled = true;
+} }
  else {
   console.log('Incorrect guess/Not valid guess type');
   DOMSELECTORS.lol.innerHTML = '';
   DOMSELECTORS.lol.innerHTML = 'You Guess Incorrect';
-  attempts2.push(letter_choice)
+
 } 
   console.log(correctGuessesPlaceholder.join(''));
-  }
-}
+  } }
+
 
 
 const DOMSELECTORS = {
@@ -146,7 +149,7 @@ const DOMSELECTORS = {
   lol: document.getElementById("GuessType"),
   gog: document.getElementById("Length1"),
   poop: document.getElementById('Guessmany'),
-  wordL: document.getElementById('WordLength')
+  wordL: document.getElementById('WordLength'),
 }
 
 DOMSELECTORS.wordL.innerHTML = correctGuessesPlaceholder
@@ -158,15 +161,11 @@ DOMSELECTORS.Button1.addEventListener("click" , TakeAGUESS)
 function TakeAGUESS(){
 if (guesses <= 0){
   DOMSELECTORS.poop.innerHTML=guesses
-  console.log("game over")
-  console.log("these are all your correct guesses" , attempts1)
-  console.log("these are all your incorrect guesses" , attempts2)
   }
 else if(guesses > 0){
   
   guesses -= 1
   DOMSELECTORS.poop.innerHTML=guesses
-  // fix this to be same as other one
   showletter()
   console.log(guesses)
 }
@@ -183,8 +182,8 @@ DOMSELECTORS.lol.innerHTML = 'No Guess yet';
 random_num = Math.floor(Math.random() * 100)
 selected_word = words[random_num]
 correctGuessesPlaceholder = Array(selected_word.length).fill('-'); 
-  attempts1 = []; 
-  attempts2 = [];
+DOMSELECTORS.wordL.innerHTML = correctGuessesPlaceholder.join('');
+DOMSELECTORS.Button1.disabled = false;
 }
 
 
